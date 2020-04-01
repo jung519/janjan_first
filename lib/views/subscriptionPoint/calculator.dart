@@ -1,12 +1,10 @@
-// import 'package:estate_calculator/common/dropDown.dart';
-// import 'package:estate_calculator/common/util.dart';
-// import 'package:estate_calculator/service/calculate.dart';
-// import 'package:estate_calculator/common/popupText.dart';
-import '../../common/util.dart';
-import '../../common/dropDown.dart';
-import '../../common/popupText.dart';
-import '../../service/calculate.dart';
+import 'package:estate_calculator/common/dropDown.dart';
+import 'package:estate_calculator/common/util.dart';
+import 'package:estate_calculator/service/calculate.dart';
+import 'package:estate_calculator/common/popupText.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_admob/firebase_admob.dart';
+import 'dart:io' show Platform;
 import './homelessPeriod.dart';
 import './result.dart';
 
@@ -37,9 +35,30 @@ class _SpCalculatorState extends State<SpCalculator> {
   int accountScore = 0;
   var _totalScore;
 
+  static MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
+    keywords: <String>['flutter', 'firebase', 'admob'],
+    testDevices: <String>[],
+  );
+
+  BannerAd bannerAd = BannerAd(
+      adUnitId: BannerAd.testAdUnitId,
+      size: AdSize.banner,
+      targetingInfo: targetingInfo,
+      listener: (MobileAdEvent event) {
+        print("BannerAd event is $event");
+      });
+
   @override
   void initState() {
     super.initState();
+
+    FirebaseAdMob.instance.initialize(
+        appId: Platform.isIOS
+            // iOS Test App ID
+            ? 'ca-app-pub-3940256099942544~1458002511'
+            // Android Test App ID
+            : 'ca-app-pub-3940256099942544~3347511713');
+    bannerAd..load()..show();
   }
 
     @override

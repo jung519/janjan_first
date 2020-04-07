@@ -364,6 +364,7 @@ class _HomelessPeriodState extends State<HomelessPeriod> {
                       ),
                     ],
                   ),
+                  new Padding( padding: const EdgeInsets.all(30.0) ),
           ]
         ),
         ) 

@@ -53,11 +53,11 @@ class _SpCalculatorState extends State<SpCalculator> {
     super.initState();
 
     FirebaseAdMob.instance.initialize(
-        appId: Platform.isIOS
-            // iOS Test App ID
-            ? 'ca-app-pub-3940256099942544~1458002511'
-            // Android Test App ID
-            : 'ca-app-pub-3940256099942544~3347511713');
+      appId: Platform.isIOS
+          // iOS Test App ID
+          ? 'ca-app-pub-3940256099942544~1458002511'
+          // Android
+          : 'ca-app-pub-1355655901616396/3661924862');
     bannerAd..load()..show();
   }
 
@@ -566,6 +566,7 @@ class _SpCalculatorState extends State<SpCalculator> {
                     )
                   ],
                 ),
+                new Padding( padding: const EdgeInsets.all(30.0) ),
                 ]
               ),
             )

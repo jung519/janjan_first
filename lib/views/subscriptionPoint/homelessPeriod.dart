@@ -317,8 +317,28 @@ class _HomelessPeriodState extends State<HomelessPeriod> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                Text('결과값'),
-                                Text(durationDay.toString()),
+                                // Text('결과값'),
+                                // Text(durationDay.toString()),
+                                Card(
+                                  // child: Padding(padding: const EdgeInsets.all(60.0)),
+                                  child: Padding(
+                                    padding: const EdgeInsets.fromLTRB(24.0, 50.0, 24.0, 50.0),
+                                    child: Row(
+                                      children: <Widget>[
+                                        Text('무주택기간 점수: '),
+                                        Text(
+                                          durationDay.toString(),
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.red
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  color: const Color(0xFFC6C6C6),
+                                )
                               ],
                             )
                           ),
